@@ -7,11 +7,12 @@
       "@assets/*": ["src/assets/*"],
       "@app/*": ["src/app/*"],
       "@employee/*": ["src/app/employee/*"],
+      "@homeFeed/*":["src/app/homeFeed/*"],
       "@enterprise/*": ["src/app/enterprise/*"],
       "@shared/*": ["src/app/shared/*"],
       "@layout/*": ["src/app/layout/*"],
       "@core/*": ["src/app/core/*"],
-      "@env/*": ["src/environments/*"]
+      "@env/*": ["src/environments/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

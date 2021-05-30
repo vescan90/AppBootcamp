@@ -4,6 +4,9 @@ import { Routes } from '@angular/router';
 
 export const Full_ROUTES: Routes = [
   {
+    path:'', loadChildren:()=> import('@homeFeed/homeFeed.module').then(m=>m.HomeFeedModule)
+  },
+  {
     path: 'empleados',
     loadChildren: () => import('@employee/employee.module').then(m => m.EmployeeModule)
   },

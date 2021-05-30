@@ -20,7 +20,7 @@ $BootcampApp-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$BootcampApp-theme: mat-light-theme((
+$BootcampApp-theme: mat-dark-theme((
   color: (
     primary: $BootcampApp-primary,
     accent: $BootcampApp-accent,

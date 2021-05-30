@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./full-layout.component.scss']
 })
 export class FullLayoutComponent implements OnInit {
+  sideBarOpen = false;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  sideBarToggler(event:any) {
+    this.sideBarOpen = !this.sideBarOpen;
   }
-
 }

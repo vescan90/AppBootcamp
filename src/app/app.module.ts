@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '@shared/shared.module';
 import { FullLayoutComponent } from './layout/full/full-layout.component';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MaterialModule } from './material.module';
 
 
 
@@ -19,7 +21,8 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    LayoutModule,MaterialModule
   ],
   exports: [
 
