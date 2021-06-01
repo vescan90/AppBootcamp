@@ -4,12 +4,9 @@ import { Routes } from '@angular/router';
 
 export const Full_ROUTES: Routes = [
   {
-    path:'', loadChildren:()=> import('@homeFeed/homeFeed.module').then(m=>m.HomeFeedModule)
+    path: '', loadChildren: () => import('@homeFeed/homeFeed.module').then(m => m.HomeFeedModule)
   },
-  {
-    path: 'empleados',
-    loadChildren: () => import('@employee/employee.module').then(m => m.EmployeeModule)
-  },
+  { path: 'worker', loadChildren: () => import('@worker/worker.module').then(m => m.WorkerModule) },
   {
     path: 'empresas',
     loadChildren: () => import('@enterprise/enterprise.module').then(m => m.EnterpriseModule)

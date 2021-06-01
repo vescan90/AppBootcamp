@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EnterpriseComponent } from '@enterprise/components/enterprise/enterprise.component';
+import { EnterpriseComponent } from '@app/enterprise/enterprise/enterprise.component';
 import { EnterpriseRoutingModule } from './enterprise-routing-module';
 
 

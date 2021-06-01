@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EnterpriseComponent } from './components/enterprise/enterprise.component';
+import { EnterpriseComponent } from './enterprise/enterprise.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: EnterpriseComponent  
+    component: EnterpriseComponent
   }
 ];
 

@@ -12,7 +12,9 @@ export class SidenavComponent implements OnInit {
       window.dispatchEvent(new Event('resize'));
     }, 300);
   }
-  toogleSideBar() {
+  closeSideBar() {
     this.toogleSidebarForMe.emit();
   }
+
+
 }

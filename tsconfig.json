@@ -6,7 +6,7 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@app/*": ["src/app/*"],
-      "@employee/*": ["src/app/employee/*"],
+      "@worker/*": ["src/app/worker/*"],
       "@homeFeed/*":["src/app/homeFeed/*"],
       "@enterprise/*": ["src/app/enterprise/*"],
       "@shared/*": ["src/app/shared/*"],
