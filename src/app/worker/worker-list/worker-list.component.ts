@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Person } from '@shared/models/person.model';
-import { Observable } from 'rxjs';
-import { PersonService } from '../../shared/services/person.service';
-
+import { PersonService } from '@shared/services/person.service';
+import {MatPaginator} from '@angular/material/paginator';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-worker-list',
@@ -11,9 +11,16 @@ import { PersonService } from '../../shared/services/person.service';
 
 })
 export class WorkerListComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator|undefined;
+
   length: number = 10;
   pageSizeOptions: number[] = [10, 25, 100];
-  constructor(private personsService:PersonService) { }
+  constructor
+  (
+    private personsService:PersonService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) { }
   people:any
   ngOnInit() {
   }
@@ -26,73 +33,12 @@ export class WorkerListComponent implements OnInit, AfterViewInit {
       this.dataSource=data.results;
     })
   }
-
+  onEdit(){
+    this.router.navigate(['edit'], { relativeTo: this.route })
+  }
 
 }
 
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: Person[] = [
-  {
-    id: {
-      value:"1"
-    },
-    name: {
-      first: 'Test',
-      last: ' 1',
-      title: 'Ing'
-    },
-    gender: "masculino",
-    phone: "12345678",
-    cell: "87654321",
-    email:"email@gmail.com",
-    dob:{
-      age:26,
-      date:new Date(),
-    }
-  },
-  {
-    id: {
-      value:"2"
-    },
-    name: {
-      first: 'Test',
-      last: ' 2',
-      title: 'Lic'
-    },
-    gender: "fenemino",
-    phone: "12345678",
-    cell: "87654321",
-    email:"email@gmail.com",
-    dob:{
-      age:26,
-      date:new Date(),
-    }
-  },
-  {
-    id: {
-      value:"3",
-    },
-    name: {
-      first: 'Test',
-      last: ' 2',
-      title: 'Lic'
-    },
-    gender: "fenemino",
-    phone: "12345678",
-    cell: "87654321",
-    email:"email@gmail.com",
-    dob:{
-      age:26,
-      date:new Date(),
-    }
-  },
 
 
-];

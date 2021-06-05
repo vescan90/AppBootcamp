@@ -6,7 +6,7 @@ import { WorkerFormComponent } from '@worker/Worker-form/Worker-form.component';
 
 const routes: Routes = [
   { path: '', component:WorkerListComponent },
-  { path: 'edit/:id', component: WorkerFormComponent},
+  { path: 'edit', component: WorkerFormComponent},
   { path: ':id', component: ProfileComponent },
 ];
 

@@ -1,3 +1,384 @@
-<p>
-  Worker-form works!
-</p>
+<mat-card fxLayout="column">
+  <mat-card-header fxLayout="row" fxLayout="center center">
+    <mat-card-title fxlflex=""  >Person</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxFlex>
+    <div *ngIf="id" class="container">
+      <div fxLayout="row wrap" fxLayoutGap="10px">
+        <div fxFlex="initial">
+
+        </div>
+        <div fxFlex="66">
+          <h2  >Edad {{ age }}</h2>
+        </div>
+        <div fxFlex="grow">
+          <h3>
+          {{personForm['controls'].name['controls'].title.value}}
+          {{personForm['controls'].name['controls'].first.value}}
+          {{personForm['controls'].name['controls'].last.value}}
+          </h3>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <form
+      [formGroup]="personForm"
+      id="personForm"
+      (ngSubmit)="onSubmit()"
+      fxLayout="column"
+      fxLayoutGap="10px"
+    >
+<h3 fxLayout="row"
+fxFlex="100%"
+style="padding-top: 10px;">
+  Datos personales
+</h3>
+<div fxLayout="row wrap" fxLayoutGap="10px" formGroupName="name">
+    <mat-form-field
+            appearance="outline"
+            fxFlex="0 0 140px"
+            fxFlex.xs="100%">
+            <mat-label>Titulo </mat-label>
+            <mat-select formControlName="title" appearance="outline">
+              <mat-option [value]="null">--</mat-option>
+              <mat-option *ngFor="let opcion of options"  [value]="opcion.id">
+                {{opcion.label}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+
+            </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+            appearance="outline"
+            fxFlex.xs="100%"
+            fxFlex.gt-xs="4 0 calc(38%)"
+          >
+            <mat-label>Nombre </mat-label>
+            <input matInput formControlName="first" />
+            <mat-error>
+
+            </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+    appearance="outline"
+    fxFlex.xs="100%"
+    fxFlex.gt-xs="4 0 calc(38% - 10px)"
+    >
+    <mat-label>Apellido </mat-label>
+    <input matInput formControlName="last" />
+    <mat-error>
+
+    </mat-error>
+    </mat-form-field>
+
+</div>
+
+
+<div fxLayout="row wrap" fxLayoutGap="10px">
+
+  <mat-form-field
+  appearance="outline"
+  fxFlex="0 0 60px"
+  fxFlex.xs="100%">
+  <mat-label mat-label>Edad </mat-label>
+    <input readonly matInput formControlName="age" />
+  </mat-form-field>
+
+    <mat-form-field
+          appearance="outline"
+          fxFlex="100%"
+          fxFlex.gt-xs="4 0 calc(47% - 10px)"
+        >
+          <mat-label>fecha de nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date"   name="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+
+          </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      hintLabel="Genero"
+      appearance="outline"
+      fxFlex.xs="100%"
+      fxFlex.gt-xs="4 0 calc(45% - 10px)">
+      <mat-select formControlName="gender" appearance="outline">
+        <mat-option [value]="null">--</mat-option>
+        <mat-option [value]="'female'">Femenino</mat-option>
+        <mat-option [value]="'male'">Masculino</mat-option>
+      </mat-select>
+      <mat-error>
+
+      </mat-error>
+    </mat-form-field>
+
+</div>
+
+<div fxLayout="row" formGroupName="picture" fxLayoutGap="10px">
+
+    <mat-form-field
+      appearance="outline"
+      fxFlex="4 0 calc((100%   - 20px)">
+      <mat-label>foto url </mat-label>
+      <input matInput formControlName="large" />
+      <mat-error>
+
+      </mat-error>
+    </mat-form-field>
+
+</div>
+
+<div fxLayout="row">
+  <h3>
+    Contacto
+  </h3>
+</div>
+
+<div fxLayout="row wrap" fxLayoutGap="10px" >
+
+      <mat-form-field
+        appearance="outline"
+        fxFlex="100%"
+        fxFlex.gt-xs="4 0 calc(33% - 10px)"
+      >
+        <mat-label>telefono </mat-label>
+        <input matInput formControlName="phone" />
+        <mat-error>
+
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+      appearance="outline"
+      fxFlex="100%"
+      fxFlex.gt-xs="4 0 calc(33% - 10px)"
+    >
+      <mat-label>Celular </mat-label>
+      <input matInput formControlName="cell" />
+      <mat-error>
+>
+      </mat-error>
+    </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        fxFlex="100%"
+        fxFlex.gt-xs="4 0 calc(33% - 10px)"
+      >
+        <mat-label>Email </mat-label>
+        <input matInput formControlName="email" />
+        <mat-error>
+
+        </mat-error>
+      </mat-form-field>
+</div>
+
+<div fxLayout="row">
+  <h3>
+    Direccion
+  </h3>
+</div>
+
+<div fxLayout="row wrap" fxLayoutGap="10px" formGroupName="location">
+
+        <mat-form-field
+          appearance="outline"
+          fxFlex="100%"
+          fxFlex.gt-xs="4 0 calc(33% -10px )"
+        >
+          <mat-label>Cuidad </mat-label>
+          <input matInput formControlName="city" />
+          <mat-error>
+
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          fxFlex="100%"
+          fxFlex.gt-xs="4 0 calc(33% -10px)"
+        >
+          <mat-label> Codigo Postal </mat-label>
+          <input matInput formControlName="postcode" />
+          <mat-error>
+
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          fxFlex="100%"
+          fxFlex.gt-xs="4 0 calc(33% -10px)"
+        >
+          <mat-label> Estado / Dependecia </mat-label>
+          <input matInput formControlName="state" />
+          <mat-error>
+
+          </mat-error>
+
+        </mat-form-field>
+
+
+        <ng-container  formGroupName="coordinates" >
+
+          <mat-form-field
+          appearance="outline"
+          fxFlex="100%"
+          fxFlex.gt-xs="4 0 calc(33% -10px)"
+        >
+          <mat-label> Latitud </mat-label>
+          <input matInput formControlName="lat" />
+          <mat-error>
+
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          fxFlex="100%"
+          fxFlex.gt-xs="4 0 calc(33% -10px)"
+        >
+          <mat-label> longitud </mat-label>
+          <input matInput formControlName="lon" />
+          <mat-error>
+
+          </mat-error>
+        </mat-form-field>
+
+
+        </ng-container>
+
+
+
+        <mat-form-field
+          appearance="outline"
+          fxFlex="100%"
+          fxFlex.gt-xs="4 0 calc(33% -10px)"
+        >
+          <mat-label> Pais </mat-label>
+          <input matInput formControlName="country" />
+
+            <mat-error>
+
+          </mat-error>
+        </mat-form-field>
+
+        <ng-container formGroupName="street">
+          <mat-form-field
+            appearance="outline"
+            fxFlex="100%"
+            fxFlex.gt-xs="4 0 calc(33% -10px)"
+          >
+            <mat-label> Nombre de calle </mat-label>
+            <input matInput formControlName="name" />
+            <mat-error>
+
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field
+            appearance="outline"
+            fxFlex="100%"
+            fxFlex.gt-xs="4 0 calc(33% -10px)"
+          >
+            <mat-label> Numero de calle </mat-label>
+            <input matInput formControlName="number" />
+            <mat-error>
+
+            </mat-error>
+          </mat-form-field>
+        </ng-container>
+
+
+      <div fxFlex="grow">
+        <h3>
+         Zona horaria
+        </h3>
+      </div>
+
+
+        <ng-container formGroupName="timezone">
+          <mat-form-field
+            appearance="outline"
+            fxFlex="100%"
+            fxFlex.gt-xs="4 0 calc(33% -10px)"
+          >
+            <mat-label> descripcion </mat-label>
+            <input matInput formControlName="description" />
+            <mat-error>
+
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field
+            appearance="outline"
+            fxFlex="100%"
+            fxFlex.gt-xs="4 0 calc(33% -10px)"
+          >
+            <mat-label> offset </mat-label>
+            <input matInput formControlName="offset" />
+            <mat-error>
+
+            </mat-error>
+          </mat-form-field>
+        </ng-container>
+      </div>
+      <div *ngIf="!id" fxLayout="row wrap" fxLayoutGap="10px" formGroupName="login">
+        <mat-form-field
+          appearance="outline"
+          fxFlex="100%"
+          fxFlex.gt-xs="4 0 calc(50% -10px)"
+        >
+          <mat-label> Nombre de usuario </mat-label>
+          <input matInput formControlName="username" />
+          <mat-error>
+            <app-error-form
+            [personForm]="personForm['controls'].login['controls'].username"
+            [control]="'username'"
+            [validationMessages]="ValidationM"
+            ></app-error-form>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          fxFlex="100%"
+          fxFlex.gt-xs="4 0 calc(50% -10px)"
+        >
+          <mat-label> password </mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error>
+            <app-error-form
+            [personForm]="personForm['controls'].login['controls'].password"
+            [control]="'password'"
+            [validationMessages]="ValidationM"
+            ></app-error-form>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions fxLayoutAlign="end center">
+    <button mat-stroked-button type="button" (click)="onCancel()">
+      Cancelar
+    </button>
+    <button
+      mat-stroked-button
+      color="primary"
+      form="personForm"
+    >
+      Salvar
+    </button>
+  </mat-card-actions>
+</mat-card>

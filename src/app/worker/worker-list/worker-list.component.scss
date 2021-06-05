@@ -1,0 +1,21 @@
+$boxed-width: 1200px;
+
+::ng-deep .mat-paginator-page-size{
+  display: none !important;
+}
+
+.mat-card {
+  max-width: $boxed-width;
+  height: 100%;
+  margin: auto;
+  .mat-card-content{
+    overflow: auto;
+    .mat-header-cell, .mat-cell{
+      padding: 0 5px;
+    }
+    .mat-row:hover {
+      background-color: rgba(0, 0, 0, .05);
+      cursor: pointer;
+    }
+  }
+}

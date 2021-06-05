@@ -8,6 +8,8 @@ import { WorkerFormComponent } from './Worker-form/Worker-form.component';
 import { MaterialModule } from '../material.module';
 import { PersonService } from '../shared/services/person.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     WorkerRoutingModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers:[
     PersonService

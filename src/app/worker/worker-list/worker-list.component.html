@@ -1,4 +1,11 @@
-<mat-card>
+<mat-card fxLayout="column">
+  <mat-card-header fxLayout="row" fxLayoutAlign="space-between center" >
+    <mat-card-title>People</mat-card-title>
+    <button mat-stroked-button color="primary" (click)="onEdit()">
+      editar
+    </button>
+  </mat-card-header>
+  <mat-card-content fxFlex>
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="id">
@@ -9,7 +16,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.name.first}}{{ element.name.last }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.name.first}}  {{ element.name.last }} </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
@@ -33,4 +40,6 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="pageSizeOptions" ></mat-paginator>
+  </mat-card-content>
 </mat-card>
