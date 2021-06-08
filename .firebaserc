@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "appbootcamp-2a841": {
+      "hosting": {
+        "BootcampApp": [
+          "appbootcamp-2a841"
+        ]
+      }
+    }
+  }
+}

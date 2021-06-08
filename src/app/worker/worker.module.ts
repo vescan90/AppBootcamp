@@ -10,21 +10,23 @@ import { PersonService } from '../shared/services/person.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '@env/environment';
 
 
 @NgModule({
   declarations: [
  ProfileComponent,
  WorkerListComponent,
- WorkerFormComponent,
-  ],
+ WorkerFormComponent,  ],
   imports: [
     CommonModule,
     WorkerRoutingModule,
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers:[
     PersonService

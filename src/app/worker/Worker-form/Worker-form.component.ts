@@ -1,6 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+
+const getObservable = (collection: AngularFirestoreCollection<any>) => {
+  const subject = new BehaviorSubject<any[]>([]);
+  collection.valueChanges({ idField: 'id' }).subscribe((val: any[]) => {
+    subject.next(val);
+  });
+  return subject;
+};
 
 @Component({
   selector: 'app-Worker-form',
@@ -9,12 +20,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class WorkerFormComponent implements OnInit {
 
-  personForm: FormGroup|undefined;
-  date: Date =new Date();
-  age: string ="";
-  id: string="";
+  personForm: FormGroup | undefined;
+  date: Date = new Date();
+  age: string = "";
+  id: string = "";
   hide = true;
-  final="";
+  final = "";
   options = [
     { id: 'Mr', label: 'Mr' },
     { id: 'Ms', label: 'Ms' },
@@ -32,7 +43,8 @@ export class WorkerFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-  ){
+    private store: AngularFirestore
+  ) {
 
   }
 
@@ -85,28 +97,33 @@ export class WorkerFormComponent implements OnInit {
           '',
           [Validators.required, Validators.pattern('^[0-9a-zA-Z]{1,20}$')],
         ],
-        password: ['',Validators.required ],
-        md5: ['', Validators.required ],
-        salt: ['', Validators.required ],
-        sha1: ['',Validators.required ],
-        sha256: ['', Validators.required ],
-        uuid: ['', Validators.required ],
+        password: ['', Validators.required],
+        md5: ['', Validators.required],
+        salt: ['', Validators.required],
+        sha1: ['', Validators.required],
+        sha256: ['', Validators.required],
+        uuid: ['', Validators.required],
       }),
       picture: this.fb.group({
         large: ['', [Validators.required, Validators.pattern(regURL)]],
         medium: ['', [Validators.required, Validators.pattern(regURL)]],
         thumbnail: ['', [Validators.required, Validators.pattern(regURL)]],
       }),
-      registered:this.fb.group({
-        age: ['', Validators.required ],
-        date: ['', Validators.required ],
+      registered: this.fb.group({
+        age: ['', Validators.required],
+        date: ['', Validators.required],
       }),
     });
   }
-  onSubmit(){
-
+  onSubmit() {
+    this.store.collection('person').add(this.personForm?.value).then(()=>{
+      console.log("Exito al guardar los datos");
+      this.router.navigate(['../'], { relativeTo: this.route });
+    }).catch(error=>{
+      console.log(error);
+    });
   }
-  onCancel(){
-
+  onCancel() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

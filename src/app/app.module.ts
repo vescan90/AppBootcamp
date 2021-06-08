@@ -9,6 +9,9 @@ import { FullLayoutComponent } from './layout/full/full-layout.component';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './material.module';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+
 
 
 
@@ -22,7 +25,9 @@ import { MaterialModule } from './material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    LayoutModule,MaterialModule
+    LayoutModule,
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   exports: [
 
